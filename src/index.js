@@ -4,7 +4,7 @@ const { ROUTER_PATHS } = require('./routerPaths')
 
 const app = express();
 
-const PORT = process.env.PORT || 3000;
+const PORT = 3000;
 
 app.use(express.json());
 
