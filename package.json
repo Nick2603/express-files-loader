@@ -2,9 +2,11 @@
   "name": "mykyta_vostrikov_16.04.24_restpi_test_task",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "start": "node src/index.js",
+    "build": "npx tsc",
+    "start": "node dist/index.js",
+    "dev": "nodemon src/index.ts",
     "test": "jest"
   },
   "author": "Mykyta Vostrikov",
@@ -13,7 +15,16 @@
     "express": "^4.19.2"
   },
   "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/jest": "^29.5.12",
+    "@types/node": "^20.12.7",
+    "@types/nodemon": "^1.19.6",
+    "@types/supertest": "^6.0.2",
     "jest": "^29.7.0",
-    "supertest": "^6.3.4"
+    "nodemon": "^3.1.0",
+    "supertest": "^6.3.4",
+    "ts-jest": "^29.1.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
   }
 }

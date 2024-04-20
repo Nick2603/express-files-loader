@@ -1,6 +1,6 @@
-const request = require('supertest');
-const { app , server } = require('./index');
-const { removeDirectory, createDirectory } = require('./testUtils');
+import request from 'supertest';
+import { app , server } from './index';
+import { removeDirectory, createDirectory } from './testUtils';
 
 jest.mock('./constants', () => {
   return {

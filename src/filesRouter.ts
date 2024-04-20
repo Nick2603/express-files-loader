@@ -1,14 +1,14 @@
-const express = require('express');
-const {
+import { Request, Response, Router } from 'express';
+import {
   writeFile,
   readFile,
   getListOfFiles,
   removeFile
-} = require('./utils');
+} from './utils';
 
-const filesRouter = express.Router();
+export const filesRouter = Router();
 
-filesRouter.post('/', async (req, res) => {
+filesRouter.post('/', async (req: Request, res: Response) => {
   const { filename, data } = req.body;
 
   if (!filename || !data) return res.status(400).json({ message: 'Missing filename or data in request body' });
@@ -24,7 +24,7 @@ filesRouter.post('/', async (req, res) => {
   }
 });
 
-filesRouter.get('/', async (_, res) => {
+filesRouter.get('/', async (_: Request, res: Response) => {
   try {
     const files = await getListOfFiles();
   
@@ -36,7 +36,7 @@ filesRouter.get('/', async (_, res) => {
   }
 });
 
-filesRouter.get('/:filename', async (req, res) => {
+filesRouter.get('/:filename', async (req: Request, res: Response) => {
   const { filename } = req.params;
 
   try {
@@ -52,7 +52,7 @@ filesRouter.get('/:filename', async (req, res) => {
   }
 });
 
-filesRouter.put('/:filename', async (req, res) => {
+filesRouter.put('/:filename', async (req: Request, res: Response) => {
   const { filename } = req.params;
 
   const { data } = req.body;
@@ -70,7 +70,7 @@ filesRouter.put('/:filename', async (req, res) => {
   }
 });
 
-filesRouter.delete('/:filename', async (req, res) => {
+filesRouter.delete('/:filename', async (req: Request, res: Response) => {
   const { filename } = req.params;
 
   try {
@@ -83,5 +83,3 @@ filesRouter.delete('/:filename', async (req, res) => {
     res.status(400).json({ message: 'Error deleting file' });
   }
 });
-
-module.exports = { filesRouter };
